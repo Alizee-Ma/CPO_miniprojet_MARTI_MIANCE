@@ -50,6 +50,10 @@ public class Minijeu {
 
         grille.melangerMatriceAleatoirement(5); // Mélange la grille avec 5 tours
         System.out.println("Grille après mélange aléatoire :\n" + grille);
+        
+        Partie partie = new Partie(grille); // Création d'une nouvelle partie avec la grille
+        partie.lancerPartie(); // Lancement de la partie
+      
     }
-}
+    }
 
