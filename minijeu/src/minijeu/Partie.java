@@ -19,7 +19,7 @@ public class Partie {
     }
 
     // Méthode pour lancer la partie
-    public void lancerPartie() {
+    public void initialiserPartie() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bienvenue dans le jeu de LightOff !");
         System.out.println("Voici la grille initiale :");
