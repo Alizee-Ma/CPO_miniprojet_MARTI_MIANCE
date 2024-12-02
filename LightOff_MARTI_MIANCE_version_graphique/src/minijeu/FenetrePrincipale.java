@@ -8,6 +8,7 @@ package minijeu;
  *
  * @author alize
  */
+import java.awt.GridLayout;
 import javax.swing.JButton;
 public class FenetrePrincipale extends javax.swing.JFrame {
     /**
