@@ -15,8 +15,7 @@ public class Minijeu {
      */
          // Méthode main pour tester la classe CelluleLumineuse
     public static void main(String[] args) {
-        // Création de cellules lumineuses et test des méthodes
-        CelluleLumineuse cellule1 = new CelluleLumineuse(); // Par défaut éteinte
+         CelluleLumineuse cellule1 = new CelluleLumineuse(); // Par défaut éteinte
         CelluleLumineuse cellule2 = new CelluleLumineuse(true); // Initialisée à allumée
 
         // Affichage de l'état initial des cellules
@@ -50,6 +49,10 @@ public class Minijeu {
 
         grille.melangerMatriceAleatoirement(5); // Mélange la grille avec 5 tours
         System.out.println("Grille après mélange aléatoire :\n" + grille);
+        
+        Partie partie = new Partie(grille); // Création d'une nouvelle partie avec la grille
+        partie.initialiserPartie(); // Lancement de la partie
+      
     }
-}
+    }
 
