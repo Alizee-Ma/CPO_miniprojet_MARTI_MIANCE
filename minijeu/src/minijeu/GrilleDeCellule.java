@@ -8,7 +8,7 @@ package minijeu;
  *
  * @author alize
  */
-public class GrilleDeCellule {
+class GrilleDeCellule {
     // Attribut représentant la grille de cellules lumineuses
     private final CelluleLumineuse[][] matriceCellules;
 
@@ -22,31 +22,39 @@ public class GrilleDeCellule {
         }
     }
 
+    // Méthode pour obtenir la taille de la grille
+    public int getTaille() {
+        return matriceCellules.length; // Retourne la taille de la grille (nombre de lignes ou colonnes)
+    }
+
     // Méthode toString pour représenter la grille sous forme de texte
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(); // Utilisation de StringBuilder pour une construction efficace de la chaîne
-        for (CelluleLumineuse[] matriceCellule : matriceCellules) {
-            // Parcourt chaque ligne de la grille
-            for (CelluleLumineuse matriceCellule1 : matriceCellule) {// Parcourt chaque cellule de la ligne
-                sb.append(matriceCellule1.toString()).append(" "); // Ajoute l'état de chaque cellule à la chaîne
+        for (int i = 0; i < matriceCellules.length; i++) { // Parcourt chaque ligne de la grille
+            for (int j = 0; j < matriceCellules[i].length; j++) { // Parcourt chaque cellule de la ligne
+                sb.append(matriceCellules[i][j].toString()).append(" "); // Ajoute l'état de chaque cellule à la chaîne
             }
             sb.append("\n"); // Ajoute un retour à la ligne après chaque ligne de la grille
         }
         return sb.toString(); // Retourne la représentation textuelle complète de la grille
-}
+    }
 
- // Méthode pour activer une ligne de cellules
+    // Méthode pour activer une ligne de cellules
     public void activerLigneDeCellules(int idLigne) {
-        for (CelluleLumineuse matriceCellule : matriceCellules[idLigne]) {
-            matriceCellule.inverserEtat(); // Inverse l'état de chaque cellule de la ligne spécifiée
+        if (idLigne >= 0 && idLigne < matriceCellules.length) { // Vérifie que l'indice est valide
+            for (int j = 0; j < matriceCellules[idLigne].length; j++) {
+                matriceCellules[idLigne][j].inverserEtat(); // Inverse l'état de chaque cellule de la ligne spécifiée
+            }
         }
     }
 
     // Méthode pour activer une colonne de cellules
     public void activerColonneDeCellules(int idColonne) {
-        for (CelluleLumineuse[] matriceCellule : matriceCellules) {
-            matriceCellule[idColonne].inverserEtat(); // Inverse l'état de chaque cellule de la colonne spécifiée
+        if (idColonne >= 0 && idColonne < matriceCellules[0].length) { // Vérifie que l'indice est valide
+            for (int i = 0; i < matriceCellules.length; i++) {
+                matriceCellules[i][idColonne].inverserEtat(); // Inverse l'état de chaque cellule de la colonne spécifiée
+            }
         }
     }
 
@@ -56,6 +64,7 @@ public class GrilleDeCellule {
             matriceCellules[i][i].inverserEtat(); // Inverse l'état des cellules sur la diagonale descendante
         }
     }
+
     // Méthode pour activer la diagonale montante (de bas gauche à haut droit)
     public void activerDiagonaleMontante() {
         for (int i = 0; i < matriceCellules.length; i++) {
@@ -67,16 +76,39 @@ public class GrilleDeCellule {
     public void activerLigneColonneOuDiagonaleAleatoire() {
         int choix = (int) (Math.random() * 4); // Génère un nombre aléatoire entre 0 et 3
         switch (choix) {
-            case 0 -> activerLigneDeCellules((int) (Math.random() * matriceCellules.length));
-            case 1 -> activerColonneDeCellules((int) (Math.random() * matriceCellules.length));
-            case 2 -> activerDiagonaleDescendante();
-            case 3 -> activerDiagonaleMontante();
+            case 0:
+                activerLigneDeCellules((int) (Math.random() * matriceCellules.length));
+                break;
+            case 1:
+                activerColonneDeCellules((int) (Math.random() * matriceCellules.length));
+                break;
+            case 2:
+                activerDiagonaleDescendante();
+                break;
+            case 3:
+                activerDiagonaleMontante();
+                break;
         }
     }
- // Méthode pour mélanger la grille aléatoirement un certain nombre de tours
-    public void melangerMatriceAleatoirement(int nbTours) {
+
+    // Méthode pour mélanger la grille aléatoirement un certain nombre de tours
+    public boolean melangerMatriceAleatoirement(int nbTours) {
         for (int i = 0; i < nbTours; i++) {
             activerLigneColonneOuDiagonaleAleatoire(); // Active aléatoirement une ligne, une colonne ou une diagonale
         }
+        return false;
+    }
+         // Méthode pour vérifier si toutes les cellules sont éteintes
+       public boolean toutesCellulesEteintes() {
+         for (int i = 0; i < matriceCellules.length; i++) {
+            for (int j = 0; j < matriceCellules[i].length; j++) {
+                if (matriceCellules[i][j].estAllumee()) {
+                    return false; // Si une cellule est allumée, retourne false
+                }
+            }
+        }
+                             return true; // Si aucune cellule n'est allumée, retourne true
     }
 }
+
+
