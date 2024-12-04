@@ -14,10 +14,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     /**
      * Creates new form FenetrePrincipale
      */
+    GrilleDeCellule grille;
+    int nbCoups;
     public FenetrePrincipale() {
         initComponents();
-        int nbLignes = 10;
-int nbColonnes = 10;
+        int nbLignes =10;
+        int nbColonnes = 10;       
+this.grille = new GrilleDeCellule(nbLignes, nbColonnes);
+initialiserPartie();
 PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
 for (int i=0; i < nbLignes; i++) {
 for (int j=0; j < nbColonnes; j++ ) {
@@ -25,6 +29,10 @@ JButton bouton_cellule = new JButton(); // création d'un bouton
 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
 }
 }
+}
+public void initialiserPartie() {
+grille.toutesCellulesEteintes();
+grille.melangerMatriceAleatoirement(10);
     }
 
     /**
@@ -90,6 +98,7 @@ PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FenetrePrincipale().setVisible(true);
+
             }
         });
     }
