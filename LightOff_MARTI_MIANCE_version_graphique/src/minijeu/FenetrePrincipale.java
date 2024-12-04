@@ -49,6 +49,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void initComponents() {
 
         PanneauGrille = new javax.swing.JPanel();
+        btnLigne0 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -68,8 +69,23 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 700, 650));
 
+        btnLigne0.setBackground(new java.awt.Color(255, 255, 51));
+        btnLigne0.setText("L0");
+        btnLigne0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLigne0ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLigne0, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLigne0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLigne0ActionPerformed
+        // TODO add your handling code here:
+        this.grille.activerLigneDeCellules(0);
+        repaint();
+    }//GEN-LAST:event_btnLigne0ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,5 +125,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanneauGrille;
+    private javax.swing.JButton btnLigne0;
     // End of variables declaration//GEN-END:variables
 }
