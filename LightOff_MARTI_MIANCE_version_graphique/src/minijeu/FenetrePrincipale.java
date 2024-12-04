@@ -10,29 +10,33 @@ package minijeu;
  */
 import java.awt.GridLayout;
 import javax.swing.JButton;
+
 public class FenetrePrincipale extends javax.swing.JFrame {
+
     /**
      * Creates new form FenetrePrincipale
      */
     GrilleDeCellule grille;
     int nbCoups;
+
     public FenetrePrincipale() {
         initComponents();
-        int nbLignes =10;
-        int nbColonnes = 10;       
-this.grille = new GrilleDeCellule(nbLignes, nbColonnes);
-initialiserPartie();
-PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
-for (int i=0; i < nbLignes; i++) {
-for (int j=0; j < nbColonnes; j++ ) {
-JButton bouton_cellule = new JButton(); // création d'un bouton
-PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
-}
-}
-}
-public void initialiserPartie() {
-grille.toutesCellulesEteintes();
-grille.melangerMatriceAleatoirement(10);
+        int nbLignes = 10;
+        int nbColonnes = 10;
+        this.grille = new GrilleDeCellule(nbLignes);
+        initialiserPartie();
+        PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
+        for (int i = 0; i < nbLignes; i++) {
+            for (int j = 0; j < nbColonnes; j++) {
+                CelluleLumineuseGraphique bouton_cellule = new CelluleLumineuseGraphique(i,j, this.grille.recupCellule(i, j)); // création d'un bouton
+                PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+            }
+        }
+    }
+
+    public void initialiserPartie() {
+        grille.toutesCellulesEteintes();
+        grille.melangerMatriceAleatoirement(10);
     }
 
     /**
@@ -55,14 +59,14 @@ grille.melangerMatriceAleatoirement(10);
         PanneauGrille.setLayout(PanneauGrilleLayout);
         PanneauGrilleLayout.setHorizontalGroup(
             PanneauGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 700, Short.MAX_VALUE)
         );
         PanneauGrilleLayout.setVerticalGroup(
             PanneauGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 650, Short.MAX_VALUE)
         );
 
-        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 400, 400));
+        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 700, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

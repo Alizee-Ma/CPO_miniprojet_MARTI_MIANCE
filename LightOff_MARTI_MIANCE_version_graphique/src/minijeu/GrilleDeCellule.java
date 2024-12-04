@@ -10,7 +10,7 @@ package minijeu;
  */
 class GrilleDeCellule {
     // Attribut représentant la grille de cellules lumineuses
-    private final CelluleLumineuse[][] matriceCellules;
+    private  CelluleLumineuse[][] matriceCellules;
 
     // Constructeur pour initialiser la grille de cellules lumineuses
     public GrilleDeCellule(int taille) {
@@ -20,6 +20,10 @@ class GrilleDeCellule {
                 matriceCellules[i][j] = new CelluleLumineuse(); // Initialisation de chaque cellule à éteinte
             }
         }
+    }
+    
+    public CelluleLumineuse recupCellule(int i, int j) {
+        return matriceCellules[i][j];
     }
 
     // Méthode pour obtenir la taille de la grille
