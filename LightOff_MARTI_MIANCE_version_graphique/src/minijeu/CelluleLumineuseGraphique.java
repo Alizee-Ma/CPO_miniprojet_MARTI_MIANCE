@@ -4,7 +4,10 @@
  */
 package minijeu;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 /**
@@ -20,14 +23,23 @@ public class CelluleLumineuseGraphique extends JButton {
         this.x = x;
         this.y = y;
         this.cellule_associee = cellule_associee;
+         this.setPreferredSize(new Dimension(50, 50)); // Définir une taille préférée pour chaque cellule
+        this.setBorder(BorderFactory.createLineBorder(Color.BLACK)); // Ajouter une bordure pour l'espace en
     }
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-        this.setText(cellule_associee.toString());
-    }
-    
-    
+        super.paintComponent(g); // Appel de la méthode de la superclasse pour préserver les fonctionnalités de base
+        
+        // Définir la couleur en fonction de l'état de la cellule associée
+        if (cellule_associee.estAllumee()) {
+            g.setColor(Color.YELLOW); // Couleur jaune si la cellule est allumée
+        } else {
+            g.setColor(Color.GRAY); // Couleur grise si la cellule est éteinte
+        }
+        
+        // Remplir le bouton avec la couleur définie
+        g.fillRect(0, 0, getWidth(), getHeight());
+    }    
     
 }
