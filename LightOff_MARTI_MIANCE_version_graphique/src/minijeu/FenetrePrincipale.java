@@ -69,6 +69,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         btnColonne7 = new javax.swing.JButton();
         btnColonne8 = new javax.swing.JButton();
         btnColonne9 = new javax.swing.JButton();
+        btnDiagDescendante = new javax.swing.JButton();
+        btnDiagMontante = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -79,14 +81,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setLayout(PanneauGrilleLayout);
         PanneauGrilleLayout.setHorizontalGroup(
             PanneauGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1090, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
         );
         PanneauGrilleLayout.setVerticalGroup(
             PanneauGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 430, Short.MAX_VALUE)
         );
 
-        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 1090, 650));
+        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 750, 430));
 
         btnLigne0.setBackground(new java.awt.Color(255, 255, 51));
         btnLigne0.setText("L0");
@@ -95,7 +97,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnLigne0ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLigne0, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        getContentPane().add(btnLigne0, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 50, -1));
 
         btnLigne1.setText("L1");
         btnLigne1.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +105,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnLigne1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLigne1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        getContentPane().add(btnLigne1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 50, -1));
 
         btnLigne2.setText("L2");
         btnLigne2.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +113,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnLigne2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLigne2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+        getContentPane().add(btnLigne2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 50, -1));
 
         btnLigne3.setText("L3");
         btnLigne3.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +121,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnLigne3ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLigne3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
+        getContentPane().add(btnLigne3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 50, -1));
 
         btnLigne4.setText("L4");
         btnLigne4.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +129,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnLigne4ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLigne4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+        getContentPane().add(btnLigne4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 50, -1));
 
         btnLigne5.setText("L5");
         btnLigne5.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +137,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnLigne5ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLigne5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
+        getContentPane().add(btnLigne5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 50, -1));
 
         btnLigne6.setText("L6");
         btnLigne6.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +145,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnLigne6ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLigne6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, -1));
+        getContentPane().add(btnLigne6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 50, -1));
 
         btnLigne7.setText("L7");
         btnLigne7.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +153,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnLigne7ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLigne7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, -1, -1));
+        getContentPane().add(btnLigne7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 50, -1));
 
         btnLigne8.setText("L8");
         btnLigne8.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +161,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnLigne8ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLigne8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, -1, -1));
+        getContentPane().add(btnLigne8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 50, -1));
 
         btnLigne9.setText("L9");
         btnLigne9.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +169,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnLigne9ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLigne9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, -1, -1));
+        getContentPane().add(btnLigne9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 50, -1));
 
         btnColonne0.setText("C0");
         btnColonne0.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +177,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnColonne0ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnColonne0, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
+        getContentPane().add(btnColonne0, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 50, -1));
 
         btnColonne1.setText("C1");
         btnColonne1.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +185,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnColonne1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnColonne1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
+        getContentPane().add(btnColonne1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 50, -1));
 
         btnColonne2.setText("C2");
         btnColonne2.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +193,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnColonne2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnColonne2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
+        getContentPane().add(btnColonne2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 50, -1));
 
         btnColonne3.setText("C3");
         btnColonne3.addActionListener(new java.awt.event.ActionListener() {
@@ -199,7 +201,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnColonne3ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnColonne3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, -1, -1));
+        getContentPane().add(btnColonne3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 50, -1));
 
         btnColonne4.setText("C4");
         btnColonne4.addActionListener(new java.awt.event.ActionListener() {
@@ -207,7 +209,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnColonne4ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnColonne4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, -1, -1));
+        getContentPane().add(btnColonne4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 50, -1));
 
         btnColonne5.setText("C5");
         btnColonne5.addActionListener(new java.awt.event.ActionListener() {
@@ -215,7 +217,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnColonne5ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnColonne5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, -1, -1));
+        getContentPane().add(btnColonne5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 50, -1));
 
         btnColonne6.setText("C6");
         btnColonne6.addActionListener(new java.awt.event.ActionListener() {
@@ -223,7 +225,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnColonne6ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnColonne6, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, -1, -1));
+        getContentPane().add(btnColonne6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 50, -1));
 
         btnColonne7.setText("C7");
         btnColonne7.addActionListener(new java.awt.event.ActionListener() {
@@ -231,7 +233,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnColonne7ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnColonne7, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, -1, -1));
+        getContentPane().add(btnColonne7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 50, -1));
 
         btnColonne8.setText("C8");
         btnColonne8.addActionListener(new java.awt.event.ActionListener() {
@@ -239,7 +241,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnColonne8ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnColonne8, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 20, -1, -1));
+        getContentPane().add(btnColonne8, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, 50, -1));
 
         btnColonne9.setText("C9");
         btnColonne9.addActionListener(new java.awt.event.ActionListener() {
@@ -247,7 +249,23 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 btnColonne9ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnColonne9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 20, -1, -1));
+        getContentPane().add(btnColonne9, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 50, -1));
+
+        btnDiagDescendante.setText("DD");
+        btnDiagDescendante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDiagDescendanteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDiagDescendante, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 50, -1));
+
+        btnDiagMontante.setText("DM");
+        btnDiagMontante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDiagMontanteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDiagMontante, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 50, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -371,6 +389,18 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         repaint();
     }//GEN-LAST:event_btnColonne9ActionPerformed
 
+    private void btnDiagDescendanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagDescendanteActionPerformed
+        // TODO add your handling code here:
+        this.grille.activerDiagonaleDescendante();
+        repaint();
+    }//GEN-LAST:event_btnDiagDescendanteActionPerformed
+
+    private void btnDiagMontanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagMontanteActionPerformed
+        // TODO add your handling code here:
+        this.grille.activerDiagonaleMontante();
+        repaint();
+    }//GEN-LAST:event_btnDiagMontanteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -419,6 +449,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JButton btnColonne7;
     private javax.swing.JButton btnColonne8;
     private javax.swing.JButton btnColonne9;
+    private javax.swing.JButton btnDiagDescendante;
+    private javax.swing.JButton btnDiagMontante;
     private javax.swing.JButton btnLigne0;
     private javax.swing.JButton btnLigne1;
     private javax.swing.JButton btnLigne2;
