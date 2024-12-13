@@ -90,7 +90,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 750, 430));
 
-        btnLigne0.setBackground(new java.awt.Color(255, 255, 51));
         btnLigne0.setText("L0");
         btnLigne0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
