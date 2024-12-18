@@ -21,22 +21,54 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     int nbCoups;
 
     
-    public FenetrePrincipale() {
+    public FenetrePrincipale(int t) {
         initComponents();
-        int nbLignes = 10;
-        int nbColonnes = 10;
-        this.grille = new GrilleDeCellule(nbLignes);
+        int TailleGrille=t;
+        this.grille = new GrilleDeCellule(TailleGrille);
         initialiserPartie();
         
-     messageVictoire.setVisible(false); // Masqué au début
-    
-        PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
-        for (int i = 0; i < nbLignes; i++) {
-            for (int j = 0; j < nbColonnes; j++) {
-                CelluleLumineuseGraphique bouton_cellule = new CelluleLumineuseGraphique(i,j, this.grille.recupCellule(i, j)); // création d'un bouton
-                PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+
+ PanneauGrille.setLayout(new GridLayout(TailleGrille, TailleGrille));
+      for (int i = 0; i < TailleGrille; i++) {
+        for (int j = 0; j < TailleGrille; j++) {
+             CelluleLumineuseGraphique bouton_cellule = new CelluleLumineuseGraphique(i,j, this.grille.recupCellule(i, j)); // création d'un bouton
+             PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
         }
+ 
+  PanneauBoutonsVerticaux.setLayout(new GridLayout(TailleGrille, 1));
+        // Configuration du panneau de boutons verticaux
+            PanneauBoutonsVerticaux.setLayout(new GridLayout(TailleGrille, 1));
+            for (int a = 0; a < TailleGrille; a++) {
+                JButton bouton_ligne = new JButton("Ligne " + (a + 1));
+                int ligne = a; // Variable nécessaire pour le listener
+                bouton_ligne.addActionListener(e -> {
+                    grille.activerLigneDeCellules(ligne); // Active une ligne de cellules
+                    repaint(); // Met à jour l'affichage
+                    verifierFinPartie();
+                });
+                PanneauBoutonsVerticaux.add(bouton_ligne); // Ajout du bouton au panneau
+            }
+       PanneauBoutonHorizontaux.setLayout(new GridLayout(1, TailleGrille));
+            for (int b = 0; b < TailleGrille; b++) {
+                JButton bouton_colonne = new JButton("Colonne " + (b + 1));
+                int colonne = b; // Variable nécessaire pour le listener
+                bouton_colonne.addActionListener(e -> {
+                    grille.activerColonneDeCellules(colonne); // Active une colonne de cellules
+                    repaint(); // Met à jour l'affichage
+                    verifierFinPartie();
+                });
+                PanneauBoutonHorizontaux.add(bouton_colonne); // Ajout du bouton au panneau
+            }
+            PanneauBoutonHorizontaux.repaint();
+            this.pack();
+            this.revalidate();
+        
+        
+ 
+     messageVictoire.setVisible(false); // Masqué au début
+    
+       
     }
 
     public void initialiserPartie() {
@@ -522,7 +554,7 @@ private void desactiverBoutons() {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FenetrePrincipale().setVisible(true);
+                new FenetrePrincipale(10).setVisible(true);
 
             }
         });
