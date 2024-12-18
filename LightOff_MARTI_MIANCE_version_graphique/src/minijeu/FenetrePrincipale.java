@@ -8,6 +8,7 @@ package minijeu;
  *
  * @author alize
  */
+import java.awt.Component;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -20,81 +21,85 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     GrilleDeCellule grille;
     int nbCoups;
 
-    
     public FenetrePrincipale(int t) {
         initComponents();
-        int TailleGrille=t;
+        int TailleGrille = t;
         this.grille = new GrilleDeCellule(TailleGrille);
         initialiserPartie();
-        
 
- PanneauGrille.setLayout(new GridLayout(TailleGrille, TailleGrille));
-      for (int i = 0; i < TailleGrille; i++) {
-        for (int j = 0; j < TailleGrille; j++) {
-             CelluleLumineuseGraphique bouton_cellule = new CelluleLumineuseGraphique(i,j, this.grille.recupCellule(i, j)); // création d'un bouton
-             PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+        PanneauGrille.setLayout(new GridLayout(TailleGrille, TailleGrille));
+        for (int i = 0; i < TailleGrille; i++) {
+            for (int j = 0; j < TailleGrille; j++) {
+                CelluleLumineuseGraphique bouton_cellule = new CelluleLumineuseGraphique(i, j, this.grille.recupCellule(i, j)); // création d'un bouton
+                PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
         }
- 
-  PanneauBoutonsVerticaux.setLayout(new GridLayout(TailleGrille, 1));
+
+        PanneauBoutonsVerticaux.setLayout(new GridLayout(TailleGrille, 1));
         // Configuration du panneau de boutons verticaux
-            PanneauBoutonsVerticaux.setLayout(new GridLayout(TailleGrille, 1));
-            for (int a = 0; a < TailleGrille; a++) {
-                JButton bouton_ligne = new JButton("Ligne " + (a + 1));
-                int ligne = a; // Variable nécessaire pour le listener
-                bouton_ligne.addActionListener(e -> {
-                    grille.activerLigneDeCellules(ligne); // Active une ligne de cellules
-                    repaint(); // Met à jour l'affichage
-                    verifierFinPartie();
-                });
-                PanneauBoutonsVerticaux.add(bouton_ligne); // Ajout du bouton au panneau
-            }
-       PanneauBoutonHorizontaux.setLayout(new GridLayout(1, TailleGrille));
-            for (int b = 0; b < TailleGrille; b++) {
-                JButton bouton_colonne = new JButton("Colonne " + (b + 1));
-                int colonne = b; // Variable nécessaire pour le listener
-                bouton_colonne.addActionListener(e -> {
-                    grille.activerColonneDeCellules(colonne); // Active une colonne de cellules
-                    repaint(); // Met à jour l'affichage
-                    verifierFinPartie();
-                });
-                PanneauBoutonHorizontaux.add(bouton_colonne); // Ajout du bouton au panneau
-            }
-            PanneauBoutonHorizontaux.repaint();
-            this.pack();
-            this.revalidate();
-        
-        
- 
-     messageVictoire.setVisible(false); // Masqué au début
-    
-       
+        PanneauBoutonsVerticaux.setLayout(new GridLayout(TailleGrille, 1));
+        for (int a = 0; a < TailleGrille; a++) {
+            JButton bouton_ligne = new JButton("Ligne " + (a + 1));
+            int ligne = a; // Variable nécessaire pour le listener
+            bouton_ligne.addActionListener(e -> {
+                grille.activerLigneDeCellules(ligne); // Active une ligne de cellules
+                repaint(); // Met à jour l'affichage
+                verifierFinPartie();
+            });
+            PanneauBoutonsVerticaux.add(bouton_ligne); // Ajout du bouton au panneau
+        }
+        PanneauBoutonHorizontaux.setLayout(new GridLayout(1, TailleGrille));
+        for (int b = 0; b < TailleGrille; b++) {
+            JButton bouton_colonne = new JButton("Colonne " + (b + 1));
+            int colonne = b; // Variable nécessaire pour le listener
+            bouton_colonne.addActionListener(e -> {
+                grille.activerColonneDeCellules(colonne); // Active une colonne de cellules
+                repaint(); // Met à jour l'affichage
+                verifierFinPartie();
+            });
+            PanneauBoutonHorizontaux.add(bouton_colonne); // Ajout du bouton au panneau
+        }
+        PanneauBoutonHorizontaux.repaint();
+        this.pack();
+        this.revalidate();
+
+        messageVictoire.setVisible(false); // Masqué au début
+
     }
 
     public void initialiserPartie() {
         grille.toutesCellulesEteintes();
         grille.melangerMatriceAleatoirement(10);
     }
-       
-  
+
 // Méthode pour vérifier si la grille est éteinte et gérer la fin de partie
-private void verifierFinPartie() {
-    if (grille.toutesCellulesEteintes()) {
-        messageVictoire.setText("Vous avez gagné!");
-        messageVictoire.setVisible(true);
-        desactiverBoutons(); // Désactiver tous les boutons
+    private void verifierFinPartie() {
+        if (grille.toutesCellulesEteintes()) {
+            messageVictoire.setText("Vous avez gagné!");
+            messageVictoire.setVisible(true);
+            desactiverBoutons(); // Désactiver tous les boutons
+        } else {
+            messageVictoire.setText(""); // Efface le message si la partie continue
+        }
     }
-    else {
-        messageVictoire.setText(""); // Efface le message si la partie continue
-    }
-}
 
 // Méthode pour désactiver les boutons une fois la partie terminée
-private void desactiverBoutons() {
-    btnDiagDescendante.setEnabled(false);
-    btnDiagMontante.setEnabled(false);
-}
+    private void desactiverBoutons() {
+        btnDiagDescendante.setEnabled(false);
+        btnDiagMontante.setEnabled(false);
+        Component[] componentsVerticaux = PanneauBoutonsVerticaux.getComponents();
 
+        for (Component leBouton : componentsVerticaux) {
+            leBouton.setEnabled(false);
+        }
+
+        Component[] componentsHorizontaux = PanneauBoutonHorizontaux.getComponents();
+
+        for (Component leBouton : componentsHorizontaux) {
+            leBouton.setEnabled(false);
+        }
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -178,7 +183,7 @@ private void desactiverBoutons() {
 
     private void messageVictoireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messageVictoireActionPerformed
         // TODO add your handling code here:
-         this.verifierFinPartie();
+        this.verifierFinPartie();
         repaint();
         verifierFinPartie();
     }//GEN-LAST:event_messageVictoireActionPerformed
